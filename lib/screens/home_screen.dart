@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:padmakanya_app/screens/about_screen.dart';
+import 'package:padmakanya_app/widgets/courses_card.dart';
 import 'package:padmakanya_app/widgets/faculty_card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -25,7 +26,7 @@ class HomeScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 18),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -33,8 +34,9 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start, // Align children to start
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Welcome Section
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.all(10),
@@ -52,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "Padma Kanya Multiple Campus (PKMC) was established in 1951(Aswin 2008 B.S.) as first women’s campus of Nepal. Initially, its academic activities were brought into operation at the present location of Kanya School, Dillibazar. King Tribhuvan inaugurated the campus. The then Prime Minister (Head of the Government) Mohan Shamsher Rana, Finance Minister Subarna Sumsher Rana, Home Minister B. P. Koirala, Minister of Education, Nripa Jung Rana, and the social workers of the time were present on the occasion. At the time of establishment, its academic programme started in eight subjects of humanities.",
+                      "Padma Kanya Multiple Campus (PKMC) was established in 1951 (Aswin 2008 B.S.) as the first women’s campus of Nepal. Initially, its academic activities were brought into operation at the present location of Kanya School, Dillibazar...",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12,
@@ -60,16 +62,18 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 5),
-                    ElevatedButton(onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context){
-                          return AboutScreen();
-                        })
-                      );
-                    }, child: Text("Read More"))
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) {
+                            return AboutScreen();
+                          }));
+                        },
+                        child: Text("Read More")),
                   ],
                 ),
               ),
+
               const SizedBox(height: 5),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10),
@@ -82,20 +86,60 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
+
+              // Facilities Section
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Facultycard(
-                      text: "Faculty of Humanities and Social Sience",
-                      ),
+                      text: "Faculty of Humanities and Social Science",
+                    ),
                     SizedBox(width: 10),
-                    Facultycard(text: "Faculty of Management",),
-                    SizedBox(width: 10),      
+                    Facultycard(
+                      text: "Faculty of Management",
+                    ),
+                    SizedBox(width: 10),
                     Facultycard(text: "Institute of Science and Technology"),
                   ],
                 ),
+              ),
+
+              const SizedBox(height: 5),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  "Our Courses",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+
+              // Courses Section with GridView
+              GridView.builder(
+                shrinkWrap:
+                    true, // Prevents GridView from taking infinite space
+                physics:
+                    NeverScrollableScrollPhysics(), // Disable GridView scroll
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, // Two columns
+                  crossAxisSpacing: 10, // Spacing between columns
+                  mainAxisSpacing: 10, // Spacing between rows
+                  childAspectRatio: 1.5, // Adjust card aspect ratio
+                ),
+                itemCount: 4, // Total number of items
+                itemBuilder: (context, index) {
+                  return CoursesCard(
+                    text: index % 6 == 0 ? "BCA" : "BBA",
+                    subtitle: index % 2 == 0
+                        ? "Bachelor of Computer Applications"
+                        : "Bachelor of Business Administration",
+                  );
+                },
               ),
             ],
           ),
@@ -104,4 +148,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
