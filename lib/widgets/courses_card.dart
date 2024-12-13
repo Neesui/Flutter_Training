@@ -12,7 +12,7 @@ class CoursesCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(40),
+      padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Color(0xff007965),
         borderRadius: BorderRadius.circular(10),

@@ -118,11 +118,8 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-
-              // Courses Section with GridView
               GridView.builder(
-                shrinkWrap:
-                    true, // Prevents GridView from taking infinite space
+                shrinkWrap: true,
                 physics:
                     NeverScrollableScrollPhysics(), // Disable GridView scroll
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -131,7 +128,7 @@ class HomeScreen extends StatelessWidget {
                   mainAxisSpacing: 10, // Spacing between rows
                   childAspectRatio: 1.5, // Adjust card aspect ratio
                 ),
-                itemCount: 4, // Total number of items
+                itemCount: 8, // Total number of items
                 itemBuilder: (context, index) {
                   return CoursesCard(
                     text: index % 6 == 0 ? "BCA" : "BBA",
