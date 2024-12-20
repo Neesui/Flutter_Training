@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:padmakanya_app/screens/about_screen.dart';
+import 'package:padmakanya_app/screens/notice_screen.dart';
 import 'package:padmakanya_app/widgets/faculty_card.dart';
 import 'package:padmakanya_app/widgets/heading.dart';
 
@@ -63,13 +64,23 @@ class HomeScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 5),
                       ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (context) {
-                              return AboutScreen();
-                            }));
-                          },
-                          child: Text("Read More")),
+                        onPressed: () {
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) {
+                            return AboutScreen();
+                          }));
+                        },
+                        child: Text("Read More"),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) {
+                            return NoticeScreen();
+                          }));
+                        },
+                        child: Text("Go Notice page"),
+                      ),
                     ],
                   ),
                 ),

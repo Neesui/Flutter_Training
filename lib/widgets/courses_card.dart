@@ -1,46 +1,36 @@
 import 'package:flutter/material.dart';
 
-class CoursesCard extends StatelessWidget {
-  const CoursesCard({
+class CourseCard extends StatelessWidget {
+  const CourseCard({
     super.key,
-    required this.text,
+    required this.title,
     required this.subtitle,
   });
-  final String text;
-  final String subtitle; // Subtitle or additional text
+
+  final String title;
+  final String subtitle;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Color(0xff007965),
+        border: Border.all(),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  text,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
-                  ),
-                ),
-                Text(
-                  subtitle,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.normal, // You can adjust this
-                    fontSize: 15, // Slightly smaller for subtitle
-                  ),
-                ),
-              ],
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
             ),
+          ),
+          Text(
+            subtitle,
+            style: TextStyle(fontSize: 20),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
